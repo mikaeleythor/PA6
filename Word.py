@@ -12,13 +12,22 @@ class Word():
     def __getitem__(self, index):
         return self.word[index]
 
-    def __lt__(self, other):
-        for index, letter in enumerate(self.word):
-            if letter < other.word[index]:
+    def __len__(self):
+        return len(self.word)
+
+    def __lt__(self, word):
+        if len(word) < len(self.word):
+            short_word = word
+            other_word = self.word
+        else:
+            short_word = self.word
+            other_word = word
+        for index, letter in enumerate(short_word):
+            if letter < other_word[index]:
                 return True
-            elif letter > other.word[index]:
+            elif letter > other_word[index]:
                 return False
-        if len(self.word) < len(other.word):
+        if short_word == self.word:
             return True
-        elif self.word == other.word:
+        elif self.word == word:
             return False

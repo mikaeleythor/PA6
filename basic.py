@@ -6,7 +6,7 @@ from Player import *
 def read_file(filename):
     file_object = open(filename)
     line_list = file_object.readlines()
-    return line_list
+    return line_list[2::]
 
 def get_attributes(line_list):
     """This function extracts wanted values from each line in line_list"""
@@ -17,12 +17,15 @@ def get_attributes(line_list):
         keys = temp.pop(-1)
         language = ''
         word2 = ''
-        if temp[1].isupper():
-            word2 = temp.pop(1)
-            if temp[2][0] == '(':
-                language = temp.pop(2)
-        elif temp[1][0] == '(':
-            language = temp.pop(1)    
+        try:
+            if temp[1].isupper():
+                word2 = temp.pop(1)
+                if temp[2][0] == '(':
+                    language = temp.pop(2)
+            elif temp[1][0] == '(':
+                language = temp.pop(1)    
+        except IndexError:
+            pass
         definition = ' '.join(temp)
         word_list.append((Word(word, word2, language, keys, definition)))
     return word_list
@@ -32,12 +35,9 @@ def create_dictionary():
     word_list = get_attributes(line_list)
     word_tree = WordTree()
     for word in word_list:
-        word_tree.insert(word)
-    
-
-
-    
+        word_tree.insert(word)    
 
 if __name__ == "__main__":
-    player1, player2 = Player(), Player()
+    # player1, player2 = Player(), Player()
+    create_dictionary()
 
