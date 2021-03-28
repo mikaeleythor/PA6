@@ -31,3 +31,7 @@ class Word():
             return True
         elif self.word == word:
             return False
+
+    def __eq__(self, word_string):
+        """This function compares a Word() object to a string"""
+        return self.word == word_string

@@ -24,7 +24,7 @@ def get_attributes(line_list):
                     language = temp.pop(2)
             elif temp[1][0] == '(':
                 language = temp.pop(1)    
-        except IndexError:
+        except IndexError: # If IndexError occurs then values language and word2 do not exist
             pass
         definition = ' '.join(temp)
         word_list.append((Word(word, word2, language, keys, definition)))
@@ -36,8 +36,7 @@ def create_dictionary():
     word_tree = WordTree()
     for word in word_list:
         word_tree.insert(word)    
-
+    return word_tree
 if __name__ == "__main__":
+    dictionary = create_dictionary()
     # player1, player2 = Player(), Player()
-    create_dictionary()
-
