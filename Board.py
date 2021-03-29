@@ -11,10 +11,11 @@ class Board():
         pass
 
     def __str__(self):
-        top =  '{:^34}'.format('~*SCRABBLE*~')+'\n   '+15*'_ '+'\n'
-        bottom = '   '+' '.join(Alphabet.alphabet[_] for _ in range(self.SIZE))
+        top =  '\n{:^34}'.format('~*SCRABBLE*~')+'\n   '+15*'_ '+'\n'
+        bottom = '   '+' '.join(Alphabet.alphabet[_] for _ in range(self.SIZE))+'\n'
         return top+'\n'.join(['{:>2}'.format(_+1)+''.join(self.array[_])+'|' for _ in range(self.SIZE)])+'\n'+bottom
 
 if __name__ == "__main__":
     b = Board()
+    b.array[6][6] = '|K'
     print(b)
