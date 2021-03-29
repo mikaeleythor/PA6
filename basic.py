@@ -85,6 +85,7 @@ def check_play_conditions():
     return False
 
 def play_game(players_list, dictionary):
+    player = players_list[0]
     board = Board()
     play = True
     while play:
@@ -93,6 +94,7 @@ def play_game(players_list, dictionary):
         plays = player.play()
         points = board.update(plays)
         player.points+=points
+        player.update_letterset()
         # ------------------------------------
         player = next_player(player, players_list)
         play = check_play_conditions()

@@ -19,15 +19,13 @@ class Board():
         points = 0
         for play in plays:
             letter = play[0]
-            points += letter.points
+            points += int(letter.points)
             x = play[1]
             y = play[2]
             x_index = Alphabet.alphabet_string.index(x)
             y_index = int(y)-1
             self.array[x_index][y_index] = letter
         return points
-            
-
 
     def __str__(self):
         top =  '\n{:^34}'.format('~*SCRABBLE*~')+'\n   '+15*'_ '+'\n'
