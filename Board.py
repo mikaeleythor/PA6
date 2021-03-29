@@ -10,6 +10,25 @@ class Board():
     def board_formatting(self):
         pass
 
+    def insert_letter(self):
+        pass
+
+    def update(self, plays):
+        """Takes in a tuple 3*(letter_object, xlocation, ylocation) and 
+        updates Board() object and returns points"""
+        points = 0
+        for play in plays:
+            letter = play[0]
+            points += letter.points
+            x = play[1]
+            y = play[2]
+            x_index = Alphabet.alphabet_string.index(x)
+            y_index = int(y)-1
+            self.array[x_index][y_index] = letter
+        return points
+            
+
+
     def __str__(self):
         top =  '\n{:^34}'.format('~*SCRABBLE*~')+'\n   '+15*'_ '+'\n'
         bottom = '   '+' '.join(Alphabet.alphabet[_] for _ in range(self.SIZE))+'\n'

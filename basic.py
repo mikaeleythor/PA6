@@ -2,6 +2,7 @@ from Word import *
 from WordTree import *
 from LetterSet import *
 from Player import *
+from Board import *
 
 def read_file(filename):
     file_object = open(filename)
@@ -38,6 +39,70 @@ def create_dictionary():
         word_tree.insert(word)    
     return word_tree
 
+def print_rules():
+    pass
+
+def wrong_player_num():
+    MIN_PLAYERS = 2
+    MAX_PLAYERS = 4
+    again = input(f'Please select a number between {MIN_PLAYERS} and {MAX_PLAYERS}, try again? (Y/N): ').upper() == 'Y'
+    if not again:
+        return False
+    else:
+        return initialize_players()
+
+def initialize_players():
+    MIN_PLAYERS = 2
+    MAX_PLAYERS = 4
+
+    player_num = input('How many players: ')
+    try:
+        player_num = int(player_num)
+    except ValueError:
+        return wrong_player_num()
+    if player_num < MIN_PLAYERS or player_num > MAX_PLAYERS:
+        return wrong_player_num()
+    elif player_num <= MAX_PLAYERS and player_num >= MIN_PLAYERS:
+        player1, player2 = Player(), Player()
+        if player_num >= 3:
+            player3 = Player()
+            if player_num == 4:
+                player4 = Player()
+                return [player1, player2, player3, player4]
+            return [player1, player2, player3]
+        return [player1, player2]
+
+def insert_letter():
+    pass
+
+def next_player(player, players_list):
+    index = players_list.index(player)
+    if index == 3:
+        return players_list[0]
+    return players_list[index+1]
+
+def check_play_conditions():
+    return False
+
+def play_game(players_list, dictionary):
+    board = Board()
+    play = True
+    while play:
+        print(board)
+        print(player)
+        plays = player.play()
+        points = board.update(plays)
+        player.points+=points
+        # ------------------------------------
+        player = next_player(player, players_list)
+        play = check_play_conditions()
+
+
+def start_game(dictionary): 
+    print_rules()
+    players_list = initialize_players()
+    play_game(players_list, dictionary)
+
 if __name__ == "__main__":
     dictionary = create_dictionary()
-    player1, player2 = Player(), Player()
+    start_game(dictionary)
