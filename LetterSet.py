@@ -10,8 +10,8 @@ class LetterSet(Alphabet):
         Alphabet.__init__(self)
         self.letter_set = []
         for _ in range(LetterSet.SIZE):
-            index = random.randint(0, self.size-1)
-            self.letter_set.append(self.alphabet(index))
+            index = random.randint(0, self.length-1)
+            self.letter_set.append(self.alphabet[index])
 
     def __str__(self):
         letters = '\t'.join([letter.letter for letter in self.letter_set])

@@ -9,8 +9,8 @@ class Alphabet():
     points = points.split()
 
     def __init__(self):
-        self.letters = [Letter(alphabet[_], points[_]) for _ in range(len(alphabet))]
-        self.length = len(self.alphabet)
+        self.letters = [Letter(Alphabet.alphabet[_], Alphabet.points[_]) for _ in range(len(Alphabet.alphabet))]
+        self.length = len(Alphabet.alphabet)
 
     def __getitem__(self, index):
         return self.letters[index]

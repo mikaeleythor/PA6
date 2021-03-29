@@ -37,6 +37,7 @@ def create_dictionary():
     for word in word_list:
         word_tree.insert(word)    
     return word_tree
+
 if __name__ == "__main__":
     dictionary = create_dictionary()
-    # player1, player2 = Player(), Player()
+    player1, player2 = Player(), Player()
