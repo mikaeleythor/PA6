@@ -50,3 +50,6 @@ class WordTree():
 
     def insert(self, word):
         self.insert_recursive(self.root, word)
+
+    def contains(self, word):
+        

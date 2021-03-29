@@ -92,7 +92,7 @@ def play_game(players_list, dictionary):
         print(board)
         print(player)
         plays = player.play()
-        points = board.update(plays)
+        points = board.update(plays, dictionary)
         player.points+=points
         player.update_letterset()
         # ------------------------------------
