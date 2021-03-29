@@ -19,3 +19,10 @@ class Alphabet():
         index = Alphabet.alphabet.index('letter')
         letter_object = self.letters[index]
         return letter_object.points
+
+
+if __name__ == "__main__":
+    A = Alphabet()
+    letter_string = 'e'
+    print(A.alphabet_string)
+    # print(A.get_index(letter_string))

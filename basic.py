@@ -98,6 +98,7 @@ def play_game(players_list, dictionary):
         # ------------------------------------
         player = next_player(player, players_list)
         play = check_play_conditions()
+        print(board)
 
 
 def start_game(dictionary): 

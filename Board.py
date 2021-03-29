@@ -22,9 +22,9 @@ class Board():
             points += int(letter.points)
             x = play[1]
             y = play[2]
-            x_index = Alphabet.alphabet_string.index(x)
+            x_index = Alphabet.alphabet_string.index(x.upper())
             y_index = int(y)-1
-            self.array[x_index][y_index] = letter
+            self.array[x_index][y_index] = f'|{letter.letter}'
         return points
 
     def __str__(self):
