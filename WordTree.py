@@ -51,5 +51,23 @@ class WordTree():
     def insert(self, word):
         self.insert_recursive(self.root, word)
 
-    def contains(self, word):
+    def find(self, key, node = None):
+        if node == None:
+            node = self.root
+
+        if node.key == key:
+            return node.data
+        elif key > node.key and node.right != None:
+            return self.find(key,node.right)
+        elif key < node.key and node.left != None:
+            return self.find(key,node.left)
+        else:
+            raise NoneValueException()
+
+    def contains(self, key):
+        try:
+            self.find(key)
+            return True
+        except NoneValueException():
+            return False
         
