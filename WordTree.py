@@ -68,6 +68,6 @@ class WordTree():
         try:
             self.find(key)
             return True
-        except NoneValueException():
+        except:
             return False
         

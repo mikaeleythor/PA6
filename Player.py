@@ -36,8 +36,8 @@ class Player():
             print('Invalid letter!\n')
             return self.get_valid_letter(_)
 
-    def update_letterset(self):
-        pass
+    def update_letterset(self, letter):
+        self.letters.letter_set.remove(letter.letter)
 
     def get_valid_location(self, _):
         location_list = list(input(f'Choose a location {_+1}(e.g. G10): '))
@@ -58,13 +58,21 @@ class Player():
         """This function prompts for a letter_string and location 
         and returns a tuple: 3*(letter_object, xlocation, ylocation)"""
         plays = []
-        for _ in range(3):
-            letter_string = self.get_valid_letter(_)
+        counter = 0
+        while counter != 7:
+            if counter == 0:
+                if input('Pass? (Y/N): ').upper() == 'Y':
+                    break
+            letter_string = self.get_valid_letter(counter)
             letter = self.choose_letter(letter_string)
-            location_list = self.get_valid_location(_)
+            location_list = self.get_valid_location(counter)
             x = location_list.pop(0)
             y = int(''.join(location_list))
             plays.append((letter, x, y))
+            self.update_letterset(letter)
+            counter += 1
+            if input('Another letter? (Y/N): ').upper() == 'N':
+                counter = 7
         return plays
 
 if __name__ == "__main__":

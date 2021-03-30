@@ -88,18 +88,23 @@ def play_game(players_list, dictionary):
     player = players_list[0]
     board = Board()
     play = True
+    counter = 0
     while play:
         print(board)
         print(player)
         plays = player.play()
         points = board.update(plays, dictionary)
+        if len(player.letters) == 0:
+            points+= 50
         player.points+=points
-        player.update_letterset()
+        player.letters = LetterSet()
+        print(player.points)
+        print(f'{player.name}:\nPoints now: {points}\nPoints total: {player.points}')
         # ------------------------------------
         player = next_player(player, players_list)
-        play = check_play_conditions()
-        print(board)
-
+        if counter == 10:
+            play = False
+        counter += 1
 
 def start_game(dictionary): 
     print_rules()

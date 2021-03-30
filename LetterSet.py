@@ -27,6 +27,9 @@ class LetterSet(Alphabet):
                 return True
         return False
 
+    def __len__(self):
+        return len(self.letter_set)
+
 
 
 if __name__ == "__main__":
